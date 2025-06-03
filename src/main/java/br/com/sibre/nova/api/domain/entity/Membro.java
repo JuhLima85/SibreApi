@@ -1,4 +1,4 @@
-package domain.entity;
+package br.com.sibre.nova.api.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,6 +24,7 @@ public class Membro {
     @Column(length = 40)
     private String email;
     private String dataCriacaoCadastro;
+    private String dataNascimento;
     private String cep;
     private String endereco;
     private String cidade;

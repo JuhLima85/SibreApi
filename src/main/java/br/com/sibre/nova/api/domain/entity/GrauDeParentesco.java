@@ -1,4 +1,4 @@
-package domain.entity;
+package br.com.sibre.nova.api.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
