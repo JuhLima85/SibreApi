@@ -68,7 +68,7 @@ public class MembroServiceImpl implements MembroService {
     @Override
     public SaveOrUpdateResponse saveOrUpdate(Membro cm) {
         // Verifique se já existe um cadastro com o mesmo número de telefone
-        Membro existingCadastro = membroRepository.findByFone(cm.getCpf());
+        Membro existingCadastro = membroRepository.findByTelefone(cm.getCpf());
 
         if (existingCadastro == null) {
             // Não há cadastro existente com o mesmo número de cpf, então podemos

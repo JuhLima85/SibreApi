@@ -12,6 +12,7 @@ import br.com.sibre.nova.api.service.RelacionamentoService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class RelacionamentoServiceImpl implements RelacionamentoService {
 
     private RelacionamentoRepository relacionamentoRepository;
@@ -128,7 +130,7 @@ public class RelacionamentoServiceImpl implements RelacionamentoService {
      * Listar cadastro por id e seus relaciomentos
      */
     public List<RelacionamentoDTO> listarHistorico(Long idPessoa, HttpSession session) {
-        MembroDTO cadastroPessoa = membroRepository.findCadastroDTOById(idPessoa);
+        MembroDTO cadastroPessoa = membroRepository.findMembroDTOById(idPessoa);
         session.setAttribute("historicoDTO", cadastroPessoa);
 
         List<RelacionamentoDTO> familiarDTO = new ArrayList<>();

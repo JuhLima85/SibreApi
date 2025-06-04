@@ -12,12 +12,28 @@ public interface MembroRepository extends JpaRepository<Membro, Long> {
 
     List<Membro> findByNomeContainingIgnoreCase(String nome);
 
-    @Query("SELECT new br.com.devsibre.Domain.Entity.DTO.CadastroDTO(f.id_c, f.nome, f.fone, f.email, f.data, f.cep, f.logradouro, f.bairro, f.localidade, f.uf, f.membro) FROM Formulario f WHERE f.id = :id")
-    MembroDTO findCadastroDTOById(@Param("id") Long id);
+    @Query("""
+    SELECT new br.com.sibre.nova.api.dto.MembroDTO(
+        m.id,
+        m.nome,
+        m.telefone,
+        m.email,
+        m.dataNascimento,
+        m.dataCriacaoCadastro,
+        m.cpf,
+        m.cep,
+        m.endereco,
+        m.cidade,
+        m.membro
+    )
+    FROM Membro m
+    WHERE m.id = :id
+    """)
+    MembroDTO findMembroDTOById(@Param("id") Long id);
 
     List<Membro> findByMembroTrue();
 
     List<Membro> findByMembroFalse();
 
-    Membro findByFone(String fone);
+    Membro findByTelefone(String fone);
 }
